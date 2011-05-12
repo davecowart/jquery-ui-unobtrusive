@@ -10,7 +10,7 @@ To pass values that would typically be passed in an options object, use attribut
 	<input data-ui-datepicker 
 		data-ui-datepicker-dayNamesMin="S,M,T,W,T,F,S" 
 		data-ui-datepicker-autoSize="true" 
-		data-ui-datepicker-buttonText=" 
+		data-ui-datepicker-buttonText="Choose"
 		data-ui-datepicker-stepMonths="2" />
 
 Passing function and option objects in attributes is not yet supported. There are also still plenty of unhandled edge cases.

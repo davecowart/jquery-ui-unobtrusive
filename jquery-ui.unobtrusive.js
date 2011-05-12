@@ -62,7 +62,7 @@
 				var booleanProperties = ['disabled', 'autoHeight', 'clearStyle', 'collapsible', 'fillSpace', 'navigation'];
 				parseAttributes($this, namespace, booleanProperties, options, parseBool);
 
-				$this.accoridon(options);
+				$this.accordion(options);
 			});
 		},
 

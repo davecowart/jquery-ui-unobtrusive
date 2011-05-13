@@ -133,7 +133,7 @@
 
 		parseDialog: function () {
 			var namespace = 'dialog';
-			$('input[' + prefix + namespace + ']').each(function () {
+			$('[' + prefix + namespace + ']').each(function () {
 				var $this = $(this);
 				var options = {};
 
@@ -144,11 +144,13 @@
 				parseAttributes($this, namespace, arrayProperties, options, parseArray);
 
 				var position = $this.attr(prefix + namespace + '-position');
-				var positionArray = position.split(",");
-				if (positionArray.length > 1) {
-					options.position = positionArray;
-				} else {
-					options.position = position;
+					if (position !== undefined) {
+					var positionArray = position.split(",");
+					if (positionArray.length > 1) {
+						options.position = positionArray;
+					} else {
+						options.position = position;
+					}
 				}
 
 				var numberProperties = ['height', 'maxHeight', 'maxWidth', 'minHeight', 'minWidth', 'width', 'zIndex'];
@@ -157,7 +159,7 @@
 				var booleanProperties = ['disabled', 'autoOpen', 'closeOnEscape', 'draggable', 'modal', 'resizable', 'stack'];
 				parseAttributes($this, namespace, booleanProperties, options, parseBool);
 
-				$this.datepicker(options);
+				$this.dialog(options);
 			});
 		},
 
@@ -208,17 +210,26 @@
 				var properties = ['event', 'idPrefix', 'panelTemplate', 'spinner', 'tabTemplate'];
 				parseAttributes($this, namespace, properties, options);
 
-				var booleanProperties = ['disabled', 'cache', 'collapsible', 'deselectable'];
+				var booleanProperties = ['cache', 'collapsible', 'deselectable']; //'disabled', 
 				parseAttributes($this, namespace, booleanProperties, options, parseBool);
 
 				var numberProperties = ['selected'];
 				parseAttributes($this, namespace, numberProperties, options, parseNumber);
 
-				//				possibly problematic due to being the same name as the boolean property
-				//				var arrayProperties = ['disabled'];
-				//				parseAttributes($this, namespace, arrayProperties, options, parseArray);
+				// possibly problematic due to being the same name as the boolean property
+				// var arrayproperties = ['disabled'];
+				// parseattributes($this, namespace, arrayproperties, options, parseArray);
 
-				$this.slider(options);
+				var disabled = $this.attr(prefix + namespace + '-disabled');
+				var bDisabled = parseBool(disabled);
+				if (bDisabled === undefined) {
+					var arrayproperties = ['disabled'];
+					parseAttributes($this, namespace, arrayproperties, options, parseArray);
+				} else {
+					options.disabled = bDisabled
+				}
+
+				$this.tabs(options);
 			});
 		},
 

@@ -173,7 +173,7 @@
 				var numberProperties = ['value'];
 				parseAttributes($this, namespace, numberProperties, options, parseNumber);
 
-				this.progressbar(options);
+				$this.progressbar(options);
 			});
 		},
 
@@ -195,7 +195,7 @@
 				var arrayProperties = ['values'];
 				parseAttributes($this, namespace, arrayProperties, options, parseArray);
 
-				this.slider(options);
+				$this.slider(options);
 			});
 		},
 
@@ -218,25 +218,23 @@
 				//				var arrayProperties = ['disabled'];
 				//				parseAttributes($this, namespace, arrayProperties, options, parseArray);
 
-				this.slider(options);
+				$this.slider(options);
 			});
 		},
 
-		parse: function (selector) {
-			$(selector).each(function () {
-				$jQui.parseAccordion();
-				$jQui.parseAutocomplete();
-				$jQui.parseButton();
-				$jQui.parseDatepicker();
-				$jQui.parseDialog();
-				$jQui.parseProgressbar();
-				$jQui.parseSlider();
-				$jQui.parseTabs();
-			});
+		parse: function () {
+			$jQui.parseAccordion();
+			$jQui.parseAutocomplete();
+			$jQui.parseButton();
+			$jQui.parseDatepicker();
+			$jQui.parseDialog();
+			$jQui.parseProgressbar();
+			$jQui.parseSlider();
+			$jQui.parseTabs();
 		}
 	};
 
 	$(function () {
-		$jQui.parse(document);
+		$jQui.parse();
 	});
 } (jQuery));

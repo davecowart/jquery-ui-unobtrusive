@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>jQuery UI Progressbar Test Suite</title>
+
+  <script type="text/javascript" src=" https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="../../../jquery-ui.unobtrusive.js"></script>
+
+  <link rel="stylesheet" href="../../../external/qunit.css" type="text/css"/>
+  <script type="text/javascript" src="../../../external/qunit.js"></script>
+  <!--<script type="text/javascript" src="../../jquery.simulate.js"></script>
+  <script type="text/javascript" src="../testsuite.js"></script>-->
+  
+  <script type="text/javascript" src="progressbar_attributes.js"></script>
+  
+  <script type="text/javascript">
+  // disable this stale testsuite for testswarm only
+  var url = window.location.search;
+  url = decodeURIComponent( url.slice( url.indexOf("swarmURL=") + 9 ) );
+  if ( url && url.indexOf("http") == 0 ) {
+    // reset config to kill previous tests; make sure testsuite.js is loaded afterwards to init the testswarm script
+    QUnit.init();
+    test("progressbar", function() { ok(true, "disabled progressbar testsuite"); });
+  }
+  </script>
+  <script type="text/javascript" src="../swarminject.js"></script>
+</head>
+<body>
+
+<h1 id="qunit-header">jQuery UI Progressbar Test Suite</h1>
+<h2 id="qunit-banner"></h2>
+<div id="qunit-testrunner-toolbar"></div>
+<h2 id="qunit-userAgent"></h2>
+<ol id="qunit-tests">
+</ol>
+
+<div id="qunit-fixture">
+  <p>
+	<div id="progressbar" data-ui-progressbar 
+		data-ui-progressbar-value="25" 
+		data-ui-progressbar-disabled="true"/>
+  </p>
+</div>
+
+</body>
+</html>
